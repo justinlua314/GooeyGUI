@@ -109,12 +109,14 @@ function goo.ComboBoxMeta:ChooseOption(option)
 	for id,choice in pairs(self.choices) do
 		if choice == option then
 			self.selected = id
+			self.text.value = id
 		end
 	end
 end
 
 function goo.ComboBoxMeta:ChooseOptionID(id)
 	self.selected = id
+	self.text.value = self.choices[id]
 end
 
 function goo.ComboBoxMeta:Clear()
