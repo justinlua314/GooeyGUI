@@ -1,6 +1,8 @@
 # GooeyGUI
 GUI Library for Love 2d inspired by the Derma Library from Gmod
 
+![image](https://user-images.githubusercontent.com/75858424/125485915-d5ee67b7-fe1c-4ca8-a51a-3732177d8a85.png)
+
 To use...
 
 Simply require the goo_core.lua file anywhere
