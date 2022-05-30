@@ -66,6 +66,11 @@ function goo.addElement(name,   -- Use this as a template of creating gooey elem
     goo.mousemovedtable[name] = mousemovedfunction
 end
 
+function goo.spawn(id)
+    local code = require("menu." .. id)
+    if code then code() end
+end
+
 function goo.getIntersect(x, y, targetX, targetY, targetWidth, targetLength)
     return (x >= targetX and x <= (targetX + targetWidth) and y >= targetY and y <= (targetY + targetLength))
 end
