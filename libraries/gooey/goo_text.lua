@@ -3,6 +3,7 @@ goo.TextMeta = {
     x = 0, y = 0, w = 200,
     value = "",
     font = nil,
+    align = "left",
     color = {1, 1, 1, 1}
 }
 
@@ -37,6 +38,10 @@ function goo.TextMeta:SetFont(font)
     self.font = font
 end
 
+function goo.TextMeta:SetAlign(align)
+    self.align = align
+end
+
 
 
 
@@ -61,6 +66,10 @@ end
 
 function goo.TextMeta:GetFont()
     return self.font
+end
+
+function goo.TextMeta:GetAlign()
+    return self.align
 end
 
 
@@ -118,7 +127,7 @@ function goo.textDrawIndividual(text)
         love.graphics.setFont(text.font)
     end
 
-    love.graphics.printf(text.value, text.x, text.y, text.w)
+    love.graphics.printf(text.value, text.x, text.y, text.w, text.align)
     if currentFont ~= nil then love.graphics.setFont(currentFont) end
 end
 
