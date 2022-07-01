@@ -133,7 +133,7 @@ end
 
 function goo.textDraw()
     for _,text in pairs(goo.Texts) do
-        goo.btextDrawIndividual(text)
+        goo.textDrawIndividual(text)
     end
 end
 
