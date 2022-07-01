@@ -4,7 +4,10 @@ goo.TextMeta = {
     value = "",
     font = nil,
     align = "left",
-    color = {1, 1, 1, 1}
+    color = {1, 1, 1, 1},
+
+    outline = false,
+    outlineColor = {0, 0, 0},
 }
 
 goo.Texts = {}
@@ -42,6 +45,30 @@ function goo.TextMeta:SetAlign(align)
     self.align = align
 end
 
+function goo.TextMeta:SetColor(r, g, b, a)
+    a = a or 1
+
+    if type(r) == "table" then
+        self.color = r
+    else
+        self.color = {r, g, b, a}
+    end
+end
+
+function goo.TextMeta:SetOutline(outline)
+    self.outline = outline
+end
+
+
+function goo.TextMeta:SetOutlineColor(r, g, b, a)
+    a = a or 1
+
+    if type(r) == "table" then
+        self.outlineColor = r
+    else
+        self.outlineColor = {r, g, b, a}
+    end
+end
 
 
 
@@ -70,6 +97,18 @@ end
 
 function goo.TextMeta:GetAlign()
     return self.align
+end
+
+function goo.TextMeta:GetColor()
+    return self.color
+end
+
+function goo.TextMeta:GetOutline()
+    return self.outline
+end
+
+function goo.TextMeta:GetOutlineColor()
+    return self.outlineColor
 end
 
 
@@ -120,13 +159,21 @@ end
 
 function goo.textDrawIndividual(text)
     local currentFont = nil
-    love.graphics.setColor(text.color)
 
     if text.font then
         currentFont = love.graphics.getFont()
         love.graphics.setFont(text.font)
     end
 
+    if text.outline then
+        love.graphics.setColor(text.outlineColor)
+        love.graphics.printf(text.value, text.x-1, text.y, text.w, text.align)
+        love.graphics.printf(text.value, text.x+1, text.y, text.w, text.align)
+        love.graphics.printf(text.value, text.x, text.y-1, text.w, text.align)
+        love.graphics.printf(text.value, text.x, text.y+1, text.w, text.align)
+    end
+
+    love.graphics.setColor(text.color)
     love.graphics.printf(text.value, text.x, text.y, text.w, text.align)
     if currentFont ~= nil then love.graphics.setFont(currentFont) end
 end
