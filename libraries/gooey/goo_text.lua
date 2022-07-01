@@ -158,7 +158,7 @@ end
 -- ENGINE ======================================================
 
 function goo.textDrawIndividual(text)
-    local currentFont = nil
+    local currentFont
 
     if text.font then
         currentFont = love.graphics.getFont()
@@ -175,7 +175,7 @@ function goo.textDrawIndividual(text)
 
     love.graphics.setColor(text.color)
     love.graphics.printf(text.value, text.x, text.y, text.w, text.align)
-    if currentFont ~= nil then love.graphics.setFont(currentFont) end
+    if currentFont then love.graphics.setFont(currentFont) end
 end
 
 function goo.textDraw()
